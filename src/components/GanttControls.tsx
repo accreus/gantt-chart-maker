@@ -143,6 +143,45 @@ const GanttControls: React.FC<GanttControlsProps> = ({
   const [defaultTheme, setDefaultTheme] = useState<Record<string, string>>({});
   const [fontSize, setFontSize] = useState(16);
   const [chartFontScale, setChartFontScale] = useState(1);
+  const [activePreset, setActivePreset] = useState<string | null>(null);
+
+  const presets = useMemo(
+    () => [
+      buildPreset("Palette 1", {
+        background: "#fbf5ef",
+        card: "#f2d3ab",
+        primary: "#c69fa5",
+        secondary: "#8b6d9c",
+        accent: "#494d7e",
+        foreground: "#272744",
+      }),
+      buildPreset("Palette 2", {
+        background: "#2a173b",
+        card: "#3f2c5f",
+        primary: "#443f7b",
+        secondary: "#4c5c87",
+        accent: "#69809e",
+        foreground: "#95c5ac",
+      }),
+      buildPreset("Palette 3", {
+        background: "#150e10",
+        card: "#272739",
+        primary: "#393849",
+        secondary: "#3b4152",
+        accent: "#4f5a64",
+        foreground: "#77888c",
+      }),
+      buildPreset("Palette 4", {
+        background: "#313638",
+        card: "#574729",
+        primary: "#975330",
+        secondary: "#c57938",
+        accent: "#ffad3b",
+        foreground: "#ffe596",
+      }),
+    ],
+    [],
+  );
 
   const themeOptions = useMemo(
     () => [
@@ -209,6 +248,11 @@ const GanttControls: React.FC<GanttControlsProps> = ({
     } else {
       setThemeColors(defaults);
     }
+
+    const storedPreset = localStorage.getItem(THEME_PRESET_STORAGE_KEY);
+    if (storedPreset) {
+      setActivePreset(storedPreset);
+    }
   }, [themeOptions]);
 
   const applyTheme = (colors: Record<string, string>, persist = true) => {
@@ -226,12 +270,32 @@ const GanttControls: React.FC<GanttControlsProps> = ({
     const next = { ...themeColors, [varName]: hex };
     setThemeColors(next);
     applyTheme(next);
+    setActivePreset(null);
+    localStorage.removeItem(THEME_PRESET_STORAGE_KEY);
   };
 
   const resetTheme = () => {
     applyTheme(defaultTheme);
     setThemeColors(defaultTheme);
     localStorage.removeItem(THEME_STORAGE_KEY);
+    localStorage.removeItem(THEME_PRESET_STORAGE_KEY);
+    setActivePreset(null);
+  };
+
+  const applyPreset = (presetName: string) => {
+    const preset = presets.find((p) => p.name === presetName);
+    if (!preset) return;
+    applyTheme(preset.values);
+    setThemeColors((prev) => ({
+      ...prev,
+      ...themeOptions.reduce<Record<string, string>>((acc, option) => {
+        const nextValue = preset.values[option.varName];
+        if (nextValue) acc[option.varName] = nextValue;
+        return acc;
+      }, {}),
+    }));
+    localStorage.setItem(THEME_PRESET_STORAGE_KEY, presetName);
+    setActivePreset(presetName);
   };
 
   const updateFontSize = (value: number) => {
@@ -304,6 +368,13 @@ const GanttControls: React.FC<GanttControlsProps> = ({
     });
   };
 
+  const updateEventName = (id: string, name: string) => {
+    onUpdateData({
+      ...data,
+      events: data.events.map((e) => (e.id === id ? { ...e, name } : e)),
+    });
+  };
+
   const updateEventCategory = (id: string, category: string) => {
     onUpdateData({
       ...data,
@@ -373,7 +444,7 @@ const GanttControls: React.FC<GanttControlsProps> = ({
   };
 
   return (
-    <div className="w-full max-w-sm space-y-4 p-4 bg-card rounded-lg border border-border overflow-y-auto max-h-[80vh]">
+    <div className="h-full w-full min-w-0 space-y-4 p-4 bg-card rounded-lg border border-border overflow-y-auto">
       <h2 className="font-display text-2xl text-foreground tracking-wide">
         Controls
       </h2>
@@ -417,6 +488,26 @@ const GanttControls: React.FC<GanttControlsProps> = ({
           <Button size="sm" variant="outline" onClick={resetTheme}>
             Reset
           </Button>
+        </div>
+        <div className="space-y-2">
+          <p className="text-xs text-muted-foreground">Presets</p>
+          <div className="grid grid-cols-2 gap-2">
+            {presets.map((preset) => (
+              <Button
+                key={preset.name}
+                size="sm"
+                variant={activePreset === preset.name ? "default" : "outline"}
+                onClick={() => applyPreset(preset.name)}
+                className="justify-start"
+              >
+                <span
+                  className="mr-2 inline-flex h-3 w-3 rounded-full"
+                  style={{ backgroundColor: preset.values["--primary"] }}
+                />
+                {preset.name}
+              </Button>
+            ))}
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-2">
           <label className="flex items-center justify-between gap-2 rounded border border-border/60 bg-muted/20 px-2 py-1">
@@ -660,7 +751,11 @@ const GanttControls: React.FC<GanttControlsProps> = ({
                 className="w-4 h-4 rounded-full flex-shrink-0"
                 style={{ backgroundColor: event.color }}
               />
-              <span className="truncate flex-1 font-body">{event.name}</span>
+              <Input
+                value={event.name}
+                onChange={(e) => updateEventName(event.id, e.target.value)}
+                className="h-6 text-xs flex-1"
+              />
               <select
                 value={event.color}
                 onChange={(e) => updateEventColor(event.id, e.target.value)}

@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import GanttChart from "@/components/GanttChart";
 import GanttControls from "@/components/GanttControls";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 import { GanttData, DEFAULT_DATA } from "@/types/gantt";
 import { Button } from "@/components/ui/button";
 
@@ -144,23 +149,30 @@ const Index = () => {
           </div>
         )}
 
-        <div className="flex gap-6 items-start">
-          {/* Chart area */}
-          <div className="flex-1 overflow-auto rounded-lg border border-border p-2 bg-card">
-            <GanttChart
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="flex gap-0 items-stretch min-h-[60vh]"
+        >
+          <ResizablePanel defaultSize={70} minSize={40}>
+            {/* Chart area */}
+            <div className="h-full overflow-auto rounded-lg border border-border p-2 bg-card">
+              <GanttChart
+                data={data}
+                onUpdateData={setData}
+                chartRef={chartRef}
+              />
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle className="mx-3" />
+          <ResizablePanel defaultSize={30} minSize={20}>
+            {/* Controls sidebar */}
+            <GanttControls
               data={data}
               onUpdateData={setData}
               chartRef={chartRef}
             />
-          </div>
-
-          {/* Controls sidebar */}
-          <GanttControls
-            data={data}
-            onUpdateData={setData}
-            chartRef={chartRef}
-          />
-        </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </div>
     </div>
   );
