@@ -1,0 +1,66 @@
+{
+  "timeSlots": [
+    "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+    "12:00", "12:30", "1:00", "1:30", "2:00", "2:30",
+    "3:00", "3:30", "4:00", "4:30", "5:00", "5:30"
+  ],
+  "eventColors": [
+    "hsl(330, 70%, 75%)",
+    "hsl(270, 40%, 72%)",
+    "hsl(165, 40%, 72%)",
+    "hsl(25, 70%, 75%)",
+    "hsl(260, 50%, 80%)",
+    "hsl(15, 80%, 80%)",
+    "hsl(330, 80%, 65%)",
+    "hsl(175, 45%, 65%)"
+  ],
+  "days": [
+    {
+      "dayLabel": "DAY-1",
+      "title": "PRAKARSH '26",
+      "categories": [
+        { "id": "cat1", "name": "TECH", "rowCount": 5 },
+        { "id": "cat2", "name": "NON - TECH", "rowCount": 14 }
+      ],
+      "events": [
+        { "id": "d1_nt1", "name": "Human Foosball", "startCol": 0, "endCol": 16, "row": 0, "color": "hsl(330, 70%, 75%)", "category": "cat2" },
+        { "id": "d1_nt2", "name": "High on Hogwarts", "startCol": 9, "endCol": 12, "row": 1, "color": "hsl(270, 40%, 72%)", "category": "cat2" },
+        { "id": "d1_nt3", "name": "Comando Fitness", "startCol": 0, "endCol": 16, "row": 2, "color": "hsl(165, 40%, 72%)", "category": "cat2" },
+        { "id": "d1_nt4", "name": "RC Rush", "startCol": 0, "endCol": 16, "row": 3, "color": "hsl(25, 70%, 75%)", "category": "cat2" },
+        { "id": "d1_nt5", "name": "Box Cricket", "startCol": 12, "endCol": 17, "row": 4, "color": "hsl(260, 50%, 80%)", "category": "cat2" },
+        { "id": "d1_nt6", "name": "Stranger Things: The Upside-Down Quest", "startCol": 3, "endCol": 9, "row": 5, "color": "hsl(15, 80%, 80%)", "category": "cat2" },
+        { "id": "d1_nt7", "name": "Human Ludo", "startCol": 0, "endCol": 16, "row": 6, "color": "hsl(330, 80%, 65%)", "category": "cat2" },
+        { "id": "d1_nt8", "name": "IPL Auction", "startCol": 7, "endCol": 9, "row": 7, "color": "hsl(175, 45%, 65%)", "category": "cat2" },
+        { "id": "d1_nt9", "name": "Timber Titans", "startCol": 12, "endCol": 16, "row": 8, "color": "hsl(330, 70%, 75%)", "category": "cat2" },
+        { "id": "d1_nt10", "name": "Bech ke Dikha", "startCol": 0, "endCol": 16, "row": 9, "color": "hsl(270, 40%, 72%)", "category": "cat2" },
+        { "id": "d1_nt11", "name": "Unbound: The Creative Arts", "startCol": 0, "endCol": 16, "row": 10, "color": "hsl(165, 40%, 72%)", "category": "cat2" },
+        { "id": "d1_nt12", "name": "FreeFire Max Cup", "startCol": 0, "endCol": 16, "row": 11, "color": "hsl(25, 70%, 75%)", "category": "cat2" },
+        { "id": "d1_nt13", "name": "BGMI Tournament", "startCol": 0, "endCol": 16, "row": 12, "color": "hsl(260, 50%, 80%)", "category": "cat2" },
+        { "id": "d1_nt14", "name": "Valorant Championship", "startCol": 0, "endCol": 16, "row": 13, "color": "hsl(15, 80%, 80%)", "category": "cat2" }
+      ]
+    },
+    {
+      "dayLabel": "DAY-2",
+      "title": "PRAKARSH '26",
+      "categories": [
+        { "id": "cat1", "name": "TECH", "rowCount": 5 },
+        { "id": "cat2", "name": "NON - TECH", "rowCount": 13 }
+      ],
+      "events": [
+        { "id": "d2_nt1", "name": "Human Foosball", "startCol": 0, "endCol": 16, "row": 0, "color": "hsl(330, 70%, 75%)", "category": "cat2" },
+        { "id": "d2_nt2", "name": "High on Hogwarts", "startCol": 1, "endCol": 5, "row": 1, "color": "hsl(270, 40%, 72%)", "category": "cat2" },
+        { "id": "d2_nt3", "name": "RC Rush", "startCol": 0, "endCol": 16, "row": 2, "color": "hsl(165, 40%, 72%)", "category": "cat2" },
+        { "id": "d2_nt4", "name": "Box Cricket", "startCol": 9, "endCol": 17, "row": 3, "color": "hsl(25, 70%, 75%)", "category": "cat2" },
+        { "id": "d2_nt5", "name": "Project Polaris", "startCol": 7, "endCol": 13, "row": 4, "color": "hsl(260, 50%, 80%)", "category": "cat2" },
+        { "id": "d2_nt6", "name": "Stranger Things: The Upside-Down Quest", "startCol": 12, "endCol": 17, "row": 5, "color": "hsl(15, 80%, 80%)", "category": "cat2" },
+        { "id": "d2_nt7", "name": "Human Ludo", "startCol": 0, "endCol": 16, "row": 6, "color": "hsl(330, 80%, 65%)", "category": "cat2" },
+        { "id": "d2_nt8", "name": "IPL Auction", "startCol": 2, "endCol": 8, "row": 7, "color": "hsl(175, 45%, 65%)", "category": "cat2" },
+        { "id": "d2_nt9", "name": "Unbound: The Creative Arts", "startCol": 0, "endCol": 16, "row": 8, "color": "hsl(330, 70%, 75%)", "category": "cat2" },
+        { "id": "d2_nt10", "name": "Basic First Aid", "startCol": 0, "endCol": 2, "row": 9, "color": "hsl(270, 40%, 72%)", "category": "cat2" },
+        { "id": "d2_nt11", "name": "FreeFire Max Cup", "startCol": 0, "endCol": 16, "row": 10, "color": "hsl(165, 40%, 72%)", "category": "cat2" },
+        { "id": "d2_nt12", "name": "BGMI Tournament", "startCol": 0, "endCol": 16, "row": 11, "color": "hsl(25, 70%, 75%)", "category": "cat2" },
+        { "id": "d2_nt13", "name": "Valorant Championship", "startCol": 0, "endCol": 16, "row": 12, "color": "hsl(260, 50%, 80%)", "category": "cat2" }
+      ]
+    }
+  ]
+}

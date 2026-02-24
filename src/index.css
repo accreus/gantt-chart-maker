@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.cdnfonts.com/css/aquire');
+
+@layer base {
+  :root {
+    --background: 40 50% 94%;
+    --foreground: 270 30% 35%;
+
+    --card: 40 50% 96%;
+    --card-foreground: 270 30% 35%;
+
+    --popover: 40 50% 96%;
+    --popover-foreground: 270 30% 35%;
+
+    --primary: 330 70% 75%;
+    --primary-foreground: 40 50% 96%;
+
+    --secondary: 270 40% 72%;
+    --secondary-foreground: 40 50% 96%;
+
+    --muted: 40 30% 90%;
+    --muted-foreground: 270 20% 50%;
+
+    --accent: 165 40% 72%;
+    --accent-foreground: 40 50% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 330 50% 80%;
+    --input: 330 50% 80%;
+    --ring: 330 70% 75%;
+
+    --radius: 0.5rem;
+
+    /* Gantt-specific colors */
+    --gantt-bg: 40 50% 94%;
+    --gantt-grid: 330 60% 82%;
+    --gantt-pink: 330 70% 75%;
+    --gantt-purple: 270 40% 72%;
+    --gantt-text: 270 40% 55%;
+    --gantt-font-scale: 1;
+    --font-size-base: 16px;
+    --gantt-mint: 165 40% 72%;
+    --gantt-orange: 25 70% 75%;
+    --gantt-lavender: 260 50% 80%;
+    --gantt-peach: 15 80% 80%;
+    --gantt-hotpink: 330 80% 65%;
+    --gantt-teal: 175 45% 65%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 270 20% 12%;
+    --foreground: 40 50% 94%;
+    --card: 270 20% 15%;
+    --card-foreground: 40 50% 94%;
+    --popover: 270 20% 15%;
+    --popover-foreground: 40 50% 94%;
+    --primary: 330 70% 75%;
+    --primary-foreground: 270 20% 12%;
+    --secondary: 270 40% 72%;
+    --secondary-foreground: 270 20% 12%;
+    --muted: 270 15% 20%;
+    --muted-foreground: 40 30% 70%;
+    --accent: 165 40% 72%;
+    --accent-foreground: 270 20% 12%;
+    --border: 270 15% 25%;
+    --input: 270 15% 25%;
+    --ring: 330 70% 75%;
+    --gantt-bg: 270 20% 12%;
+    --gantt-grid: 330 40% 30%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Aquire', sans-serif;
+    font-size: var(--font-size-base);
+  }
+}
